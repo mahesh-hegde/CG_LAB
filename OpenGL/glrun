@@ -1,6 +1,16 @@
 #!/bin/bash
 set -e
-out=${1%.c}.out
-gcc -o $out $1 -lGL -lGLU -lglut -lm
+
+if [[ "$1" = *.c ]]
+then
+	out=${1%.c}.out
+elif [[ "$1" = *.cc ]]
+then
+	out=${1%.cc}.out
+	g++ -o $out $1 -lGL -lGLU -lglut -lm
+else
+	echo "File should have .c or .cc (for C++) extension"
+	return 1
+fi
 ./$out;
 
