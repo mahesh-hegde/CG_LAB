@@ -36,7 +36,7 @@ void drawCircle(int xc, int yc, int r) {
 
 void drawQuad(int hW, int hH, int off) {
 	point points[] = {{-hW, -hH}, {hW, -hH}, {hW, hH}, {-hW, hH}};
-	glBegin(GL_POLYGON);
+	glBegin(GL_LINE_LOOP);
 	for (int i = 0; i < 4; i++) {
 		glVertex2i(points[i][0] + off, points[i][1]+off);
 	}
@@ -45,33 +45,39 @@ void drawQuad(int hW, int hH, int off) {
 }
 
 void drawParallelopiped() {
-	for (int off = -10; off <= 10; off++) {
-		drawQuad(5, 5, off);
+	for (int off = -50; off <= 50; off+=5) {
+		drawQuad(75, 75, off);
 	}
 }
 
 void drawCylinder() {
-	for (int y = -10; y <= 10; y++) {
-		drawCircle(0, y, 20);
+	for (int y = -40; y <= 40; y+=5) {
+		drawCircle(0, y, 100);
 	}
 }
 
 void displayCommon() {
 	glClearColor(0,0,0,1);
 	glClear(GL_COLOR_BUFFER_BIT);
-	gluOrtho2D(-50,50,-50,50);
+	gluOrtho2D(-250,250,-250,250);
 	glColor3f(1, 0, 0);
 	glPointSize(2.0);
 }
 
 void displayParallelopiped() {
+	glPushMatrix();
+	glLoadIdentity();
 	displayCommon();
 	drawParallelopiped();
+	glPopMatrix();
 }
 
 void displayCylinder() {
+	glPushMatrix();
+	glLoadIdentity();
 	displayCommon();
 	drawCylinder();
+	glPopMatrix();
 }
 
 int main(int argc, char **argv) {
