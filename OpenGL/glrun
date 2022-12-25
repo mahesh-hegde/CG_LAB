@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 out=${1%.c}.out
-gcc -o $out $1 -lGL -lGLU -lglut
+gcc -o $out $1 -lGL -lGLU -lglut -lm
 ./$out;
 

@@ -11,11 +11,7 @@ int abs(int n) {
 }
 
 void drawPoint(int x, int y, int inv) {
-	glColor3f(1,0,0);
-	glPointSize(2.0);
-	glBegin(GL_POINTS);
 	inv ? glVertex2i(y, x) : glVertex2i(x, y);
-	glEnd();
 }
 
 void drawLine(point a, point b) {
@@ -70,6 +66,8 @@ void init() {
 	glClearColor(1,1,1,1);
 	glClear(GL_COLOR_BUFFER_BIT);
 	gluOrtho2D(-250, 250, -250, 250);
+	glColor3f(1,0,0);
+	glPointSize(2.0);
 }
 
 point a, b;
