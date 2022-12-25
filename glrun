@@ -10,7 +10,7 @@ then
 	g++ -o $out $1 -lGL -lGLU -lglut -lm
 else
 	echo "File should have .c or .cc (for C++) extension"
-	return 1
+	exit 1
 fi
 ./$out;
 
