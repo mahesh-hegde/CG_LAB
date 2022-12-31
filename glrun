@@ -4,13 +4,15 @@ set -e
 if [[ "$1" = *.c ]]
 then
 	out=${1%.c}.out
+	compiler=gcc
 elif [[ "$1" = *.cc ]]
 then
 	out=${1%.cc}.out
-	g++ -o $out $1 -lGL -lGLU -lglut -lm
+	compiler=g++
 else
 	echo "File should have .c or .cc (for C++) extension"
 	exit 1
 fi
+$compiler -o $out $1 -lGL -lGLU -lglut -lm
 ./$out;
 
