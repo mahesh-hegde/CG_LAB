@@ -1,13 +1,10 @@
 ## OpenGL programs (Computer Graphic lab).
 The dreaded CG lab programs done to a best effort level.
 
-## General techniques (when desperate).
-
-* glPushMatrix, glLoadIdentity, glPopMatrix when something doesn't work
-
-## Some other common mistakes
-* not calling glClearColor
-* using int with loss of FP precision.
+## General mistakes
+* Wrong formula or parenthesis
+* Wrong data type (double vs int)
+* calling gluOrtho before Identity matrix is loaded
 
 ## CheckList for 3D programs
 These are the hardest to get right.
