@@ -13,37 +13,36 @@ void draw(void) {
 	glColor3f(1,0,0);
 	glLineWidth(2.0);
 
+	// poles
+	for (int side = -1; side <= 1; side += 2) { // side = 1, -1
+		int z = R * sin(toRadian(80)) * side;
+		glBegin(GL_TRIANGLE_FAN);
+		for (int theta = -180; theta <= 180; theta += 10) {
+			int x = R * sin(toRadian(theta)) * cos(toRadian(80));
+			int y = R * cos(toRadian(theta)) * cos(toRadian(80));
+			glVertex3i(x, y, z);
+		}
+		glEnd();
+		glFlush();
+	}
 	// lattitudes
-	for (int phi = -80; phi <= 80; phi += 20) {
+	for (int phi = -80; phi <= 80; phi += 10) {
 		float z = R * sin(toRadian(phi));
 		glBegin(GL_QUAD_STRIP);
-		for (int theta = -180; theta <= 180; theta += 20) {
+		for (int theta = -180; theta <= 180; theta += 10) {
 			double cos_theta = cos(toRadian(theta));
 			double sin_theta = sin(toRadian(theta));
 			double cos_phi = cos(toRadian(phi));
 			double x = R * sin_theta * cos_phi;
 			double y = R * cos_theta * cos_phi;
 			int isOddIter = (theta % 40) / 20;
-			glColor3f(isOddIter, !isOddIter, isOddIter);
+			glColor3f(isOddIter, !isOddIter, !isOddIter);
 			glVertex3d(x, y, z);
-			cos_phi = cos(toRadian(phi+20));
+			cos_phi = cos(toRadian(phi+10));
 			x = R * sin_theta * cos_phi;
 			y = R * cos_theta * cos_phi;
-			double z1 = R * sin(toRadian(phi+20));
-			glColor3f(isOddIter, isOddIter, isOddIter);
+			double z1 = R * sin(toRadian(phi+10));
 			glVertex3d(x, y, z1);
-		}
-		glEnd();
-		glFlush();
-	}
-	// poles
-	for (int side = -1; side <= 1; side += 2) { // side = 1, -1
-		int z = R * sin(toRadian(80)) * side;
-		glBegin(GL_TRIANGLE_FAN);
-		for (int theta = -180; theta <= 180; theta += 20) {
-			int x = R * sin(toRadian(theta)) * cos(toRadian(80));
-			int y = R * cos(toRadian(theta)) * cos(toRadian(80));
-			glVertex3i(x, y, z);
 		}
 		glEnd();
 		glFlush();
