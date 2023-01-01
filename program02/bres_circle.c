@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define WIN_SIZE 500
+const double W = 500.0;
 #define SWAP(x,y) do { typeof(x) temp = x; x = y; y = temp; } while (0)
 
 typedef int point[2];
@@ -35,6 +35,13 @@ void drawCircle(int xc, int yc, int r) {
 	glFlush();
 }
 
+void init() {
+	glClearColor(0, 0, 0, 1);
+	glClear(GL_COLOR_BUFFER_BIT);
+	gluOrtho2D(-W/2, W/2, -W/2, W/2);
+	glFlush();
+}
+
 void display();
 
 int _xc, _yc, _x, _y;
@@ -42,8 +49,8 @@ int _xc, _yc, _x, _y;
 void mouse(int button, int state, int x, int y) {
 	if (button == GLUT_LEFT_BUTTON) {
 		// adjust coordinates wrt origin at center
-		x = x - WIN_SIZE/2;
-		y = WIN_SIZE/2 - y;
+		x = x - W/2;
+		y = W/2 - y;
 		if (state == GLUT_DOWN) {
 			_xc = x;
 			_yc = y;
@@ -62,7 +69,7 @@ int main(int argc, char **argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
 
-	glutInitWindowSize(WIN_SIZE, WIN_SIZE);
+	glutInitWindowSize(W, W);
 	glutCreateWindow("Bresenham's Circle Drawing");
 
 	init();

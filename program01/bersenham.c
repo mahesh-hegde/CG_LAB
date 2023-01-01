@@ -68,6 +68,7 @@ void init() {
 	gluOrtho2D(-250, 250, -250, 250);
 	glColor3f(1,0,0);
 	glPointSize(2.0);
+	glFlush();
 }
 
 point a, b;
@@ -86,9 +87,7 @@ void mouse(int button, int state, int x, int y) {
 	}
 }
 
-void display() {
-	printf("display called\n");
-}
+void display() {}
 
 int main(int argc, char **argv) {
 	glutInit(&argc, argv);
