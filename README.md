@@ -14,7 +14,9 @@ These are the hardest to get right.
 
 * Enable GLUT_DEPTH and glEnable(DEPTH_TEST)
 
-* Use glOrtho not gluOrtho2D
+* clear depth buffer along with color buffer in display()
+
+* __Use glOrtho not gluOrtho2D__ - IMP
 
 * one-time init (usually):
 ```c
