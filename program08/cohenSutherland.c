@@ -66,12 +66,10 @@ void cohenSutherLand(int x0, int y0, int x1, int y1) {
 			x1 = xnew;
 			y1 = ynew;
 		}
-		printf("(%d, %d) - (%d, %d)\n", x0, y0, x1, y1);
 	} while (1);
 
 	glLineWidth(3.0);
 	glColor3f(1, 0, 0);
-	printf("%d,%d | %d,%d\n", x0, y0, x1, y1);
 	glBegin(GL_LINES);
 	glVertex2i(x0, y0);
 	glVertex2i(x1, y1);
