@@ -36,7 +36,6 @@ void draw(void) {
 			double x = R * sin_theta * cos_phi;
 			double y = R * cos_theta * cos_phi;
 			int isOddIter = (theta % 40) / 20;
-			glColor3f(isOddIter, !isOddIter, !isOddIter);
 			glVertex3d(x, y, z);
 			cos_phi = cos(toRadian(phi+10));
 			x = R * sin_theta * cos_phi;
@@ -55,6 +54,7 @@ void display() {
 	glLoadIdentity();
 	glOrtho(-R, R, -R, R, -R, R);
 	glRotatef(-60, 0, 1, 0);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	draw();
 	glPopMatrix();
 }
@@ -63,6 +63,8 @@ int main(int argc, char **argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB|GLUT_DEPTH);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 
 	glutInitWindowSize(500, 500);
 	glutCreateWindow("Sphere by tesselation");

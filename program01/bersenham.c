@@ -76,7 +76,7 @@ void mouse(int button, int state, int x, int y) {
 	if (button != GLUT_LEFT_BUTTON) return;
 	if (state == GLUT_DOWN) {
 		// We have to convert between openGL coordinate system
-		// (origin at bottom left) & our coordinate system (origin at center).
+		// (origin at top left) & our coordinate system (origin at center).
 		a[0] = x - WINDOW_WIDTH / 2;
 		a[1] = WINDOW_WIDTH / 2 - y;
 	} else {
