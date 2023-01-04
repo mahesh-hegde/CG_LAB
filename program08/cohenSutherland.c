@@ -68,6 +68,10 @@ void cohenSutherLand(int x0, int y0, int x1, int y1) {
 		}
 	} while (1);
 
+	if (!accept) {
+		return;
+	}
+
 	glLineWidth(3.0);
 	glColor3f(1, 0, 0);
 	glBegin(GL_LINES);

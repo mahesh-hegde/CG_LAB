@@ -118,7 +118,20 @@ Check for all pairs of p,q above
 Adjust x0, y0, x1, y1 according to t1 and t2.
 
 ## 10. Polygon clipping
-Belgge odte.
+### Checking if point is on left or right
+dxDy - dyDx >= 0
+where dx, dy are for line A,B
+Dx,Dy are for line A,P
+
+In counterclockwise order, left means inside, for a convex clipper.
+
+### Computing intersection
+dx1, dy1 for first line, dx2, dy2 for second line
+int div = dx2dy1 - dx1dy2
+int cross1 = x1y2 - x2y1
+int cross2 = x3y4 - x4y3
+x_intersect = (cross1 * dx2 - cross2 * dx1) / div
+y_intersect = (cross1 * dy2 - cross2 * dy1) / div
 
 ## 11. House
 * Rotate against point:

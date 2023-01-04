@@ -150,6 +150,8 @@ void mouse(int button, int state, int x, int y) {
 
 int main(int argc, char **argv) {
 	printf("Please draw polygon in anticlockwise only\n");
+	printf("First draw polygon to be clipped, then the clipper window; Both can have arbitrary shape.\n");
+	printf("To draw a polygon, click the points in anticlockwise order.\n");
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB|GLUT_SINGLE);
 	
